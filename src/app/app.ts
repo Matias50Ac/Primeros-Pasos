@@ -15,15 +15,23 @@ export class App {
   contador = signal(0);
   totalClicks = signal(0);
   
-    cambiarMensaje() {
-    this.mensaje = this.mensaje === 'Mi primera aplicación Angular' 
-      ? '¡Angular 20 es genial!' 
-      : 'Mi primera aplicación Angular';
-    this.contador++;
+  cambiarMensaje() {
+    
+    // CORRECCIÓN 1: No se puede asignar con '='. Se usa .update() o .set().
+    // También se debe leer el valor con 'this.mensaje()' en la comparación.
+    this.mensaje.update(valorActual => 
+      valorActual === 'Mi primera aplicación Angular' 
+        ? '¡Angular 20 es genial!' 
+        : 'Mi primera aplicación Angular'
+    );
+
+    // CORRECCIÓN 2: No se puede usar '++' en una signal. Se usa .update().
+    this.contador.update(valor => valor + 1);
   }
-  // Computed signal para estadísticas
+
+  // Computed signal para estadísticas (Esta parte ya estaba correcta)
   estadisticas = computed(() => {
-    const clicks = this.totalClicks();
+    const clicks = this.totalClicks(); // <-- Esto (leer con '()') está perfecto.
     if (clicks === 0) return 'Sin interacciones';
     if (clicks < 10) return 'Explorando...';
     if (clicks < 25) return 'Aprendiendo...';
@@ -32,7 +40,9 @@ export class App {
   });
   
   onContadorCambio(nuevoValor: number) {
-    this.totalClicks++;
+    // CORRECCIÓN 3: Igual que antes, no se puede usar '++'.
+    this.totalClicks.update(valor => valor + 1);
+    
     console.log('Contador cambió a:', nuevoValor);
   }
 }
