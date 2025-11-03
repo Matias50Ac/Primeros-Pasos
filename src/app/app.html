@@ -1,35 +1,103 @@
 <div class="container">
   <header>
-    <h1>{{ title }}</h1>
-    
+    <h1>{{ title() }}</h1>
+    <p class="estadisticas">{{ estadisticas() }} - Total: {{ totalClicks() }} interacciones</p>
   </header>
   
   <main>
-    <p class="mensaje">{{ mensaje }}</p>
-    <p>Total de interacciones: {{ totalClicks }}</p>
-    <button class="btn-primary" (click)="cambiarMensaje()">
-      Cambiar mensaje
-    </button>
-    <h2>🧩 Demo de Componentes</h2>
+    <section class="seccion">
+      <h2>🧩 Componentes Tradicionales</h2>
+      <div class="componentes-grid">
+        <app-contador 
+          titulo="Contador Básico"
+          [valorInicial]="0"
+          [maximo]="5"
+          (cambioValor)="onContadorCambio($event)">
+        </app-contador>
+        
+        <app-contador 
+          titulo="Contador Avanzado"
+          [valorInicial]="2"
+          [maximo]="8"
+          (cambioValor)="onContadorCambio($event)">
+        </app-contador>
+      </div>
+    </section>
     
-    <div class="componentes-grid">
-      <!-- Componente 1: Contador Básico -->
-      <app-contador>
-        titulo="Contador Básico"
-        [valorInicial]="0"
-        [maximo]="5"
-        (cambioValor)="onContadorCambio($event)">
-      </app-contador>
+    <section class="seccion">
+      <h2>⚡ Componentes con Signals</h2>
+      <div class="componentes-grid">
+        <!-- Sintaxis correcta para Angular 20 con signals -->
+        <app-contador-signals 
+          titulo="Contador con Signals"
+          [valorInicial]="0"
+          [maximo]="10"
+          (cambioValor)="onContadorCambio($event)">
+        </app-contador-signals>
+        
+        <app-contador-signals 
+          titulo="Contador Avanzado"
+          [valorInicial]="5"
+          [maximo]="20"
+          (cambioValor)="onContadorCambio($event)">
+        </app-contador-signals>
+      </div>
+    </section>
+    
+    <div class="comparacion">
+      <h3>🎯 Diferencias entre Componentes Tradicionales y Signals</h3>
+      <div class="comparacion-grid">
+        <div class="comparacion-item">
+          <h4>Componentes Tradicionales</h4>
+          <ul>
+            <li><code>@Input()</code> y <code>@Output()</code></li>
+            <li>Detección de cambios manual</li>
+            <li><code>ngOnInit</code> para inicialización</li>
+            <li>Más código boilerplate</li>
+            <li>Property binding: <code>[propiedad]="valor"</code></li>
+          </ul>
+        </div>
+        <div class="comparacion-item">
+          <h4>Componentes con Signals (Angular 20)</h4>
+          <ul>
+            <li><code>readonly input()</code> y <code>readonly output()</code></li>
+            <li>Reactividad automática</li>
+            <li><code>computed()</code> para valores derivados</li>
+            <li><code>effect()</code> para efectos secundarios</li>
+            <li>Mejor rendimiento</li>
+            <li>String inputs: <code>propiedad="valor"</code></li>
+            <li>Numeric inputs: <code>[propiedad]="numero"</code></li>
+          </ul>
+        </div>
+      </div>
       
-      <!-- Componente 2: Contador Avanzado -->
-      <app-contador>
-        titulo="Contador Avanzado"
-        [valorInicial]="3"
-        [maximo]="15"
-        (cambioValor)="onContadorCambio($event)">
-      </app-contador>
+      <div class="sintaxis-angular20">
+        <h4>📝 Sintaxis clave de Angular 20</h4>
+        <div class="sintaxis-ejemplos">
+          <div class="ejemplo">
+            <h5>Declaración de Inputs/Outputs:</h5>
+            <pre><code>// ✅ Correcto en Angular 20
+readonly titulo = input('Valor por defecto');
+readonly cambioValor = output&lt;number&gt;();
+
+// ❌ Incorrecto (Angular 19 y anteriores)
+titulo = input('Valor por defecto');
+cambioValor = output&lt;number&gt;();</code></pre>
+          </div>
+          <div class="ejemplo">
+            <h5>Uso en Templates:</h5>
+            <pre><code>&lt;!-- ✅ String inputs (sin corchetes) --&gt;
+&lt;app-contador titulo="Mi Contador"&gt;&lt;/app-contador&gt;
+
+&lt;!-- ✅ Numeric/Boolean inputs (con corchetes) --&gt;
+&lt;app-contador [valorInicial]="5" [maximo]="10"&gt;&lt;/app-contador&gt;</code></pre>
+          </div>
+        </div>
+      </div>
     </div>
+  </main>
   
   <footer>
-    <p>Desarrollado con ❤️ usando Angular 20</p>
+    <p>Desarrollado con ❤️ usando Angular 20 y Signals</p>
   </footer>
+</div>
