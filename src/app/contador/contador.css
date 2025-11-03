@@ -1,0 +1,71 @@
+.contador-card {
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  margin: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.contador-card h3 {
+  margin: 0 0 15px 0;
+  color: #1976d2;
+  font-size: 1.1rem;
+}
+
+.contador-display {
+  margin: 20px 0;
+}
+
+.valor {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1976d2;
+}
+
+.maximo {
+  font-size: 1rem;
+  color: #666;
+  margin-left: 8px;
+}
+
+.contador-botones {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.btn {
+  min-width: 60px;
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: #1976d2;
+  color: white;
+}
+
+.btn-secondary {
+  background: #757575;
+  color: white;
+}
+
+.btn-outline {
+  background: transparent;
+  color: #1976d2;
+  border: 2px solid #1976d2;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn:not(:disabled):hover {
+  opacity: 0.8;
+}

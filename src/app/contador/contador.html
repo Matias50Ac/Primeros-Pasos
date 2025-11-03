@@ -1,0 +1,30 @@
+<div class="contador-card">
+  <h3>{{ titulo }}</h3>
+  
+  <div class="contador-display">
+    <span class="valor">{{ valor }}</span>
+    <span class="maximo">/ {{ maximo }}</span>
+  </div>
+  
+  <div class="contador-botones">
+    <button 
+      class="btn btn-outline" 
+      (click)="decrementar()"
+      [disabled]="valor <= 0">
+      -
+    </button>
+    
+    <button 
+      class="btn btn-primary" 
+      (click)="incrementar()"
+      [disabled]="valor >= maximo">
+      +
+    </button>
+    
+    <button 
+      class="btn btn-secondary" 
+      (click)="reiniciar()">
+      Reset
+    </button>
+  </div>
+</div>

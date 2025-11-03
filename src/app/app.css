@@ -1,0 +1,54 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  text-align: center;
+  background: #1976d2;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+main {
+  text-align: center;
+  padding: 20px;
+}
+
+.mensaje {
+  font-size: 1.2rem;
+  color: #1976d2;
+  margin: 20px 0;
+}
+
+.contador {
+  font-size: 1rem;
+  color: #666;
+  margin: 10px 0;
+}
+
+.btn-primary {
+  background: #1976d2;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-primary:hover {
+  background: #1565c0;
+}
+
+footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px;
+  background: #f0f0f0;
+  border-radius: 8px;
+}

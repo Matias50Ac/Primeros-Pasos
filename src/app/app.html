@@ -1,0 +1,35 @@
+<div class="container">
+  <header>
+    <h1>{{ title }}</h1>
+    
+  </header>
+  
+  <main>
+    <p class="mensaje">{{ mensaje }}</p>
+    <p>Total de interacciones: {{ totalClicks }}</p>
+    <button class="btn-primary" (click)="cambiarMensaje()">
+      Cambiar mensaje
+    </button>
+    <h2>🧩 Demo de Componentes</h2>
+    
+    <div class="componentes-grid">
+      <!-- Componente 1: Contador Básico -->
+      <app-contador>
+        titulo="Contador Básico"
+        [valorInicial]="0"
+        [maximo]="5"
+        (cambioValor)="onContadorCambio($event)">
+      </app-contador>
+      
+      <!-- Componente 2: Contador Avanzado -->
+      <app-contador>
+        titulo="Contador Avanzado"
+        [valorInicial]="3"
+        [maximo]="15"
+        (cambioValor)="onContadorCambio($event)">
+      </app-contador>
+    </div>
+  
+  <footer>
+    <p>Desarrollado con ❤️ usando Angular 20</p>
+  </footer>
